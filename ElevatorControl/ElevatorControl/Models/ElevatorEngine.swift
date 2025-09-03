@@ -59,7 +59,12 @@ final class ElevatorEngine {
     }
 
     private func setState(_ mutate: (inout ElevatorState) -> Void) {
-        lock.lock(); defer { lock.unlock() }
+        lock.lock()
+        
+        defer {
+            lock.unlock()
+        }
+        
         mutate(&state)
         DispatchQueue.main.async { [stateCopy = state, cb = self.onStateChanged] in
             cb?(stateCopy)
