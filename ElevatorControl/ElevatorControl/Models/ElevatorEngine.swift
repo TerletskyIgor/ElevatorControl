@@ -102,7 +102,6 @@ final class ElevatorEngine {
 
         let currentPos = state.currentFloorPosition
         let currentFloorFloat = round(currentPos)
-        let currentFloor = Int(currentFloorFloat)
 
         if let next = nearestFloor(from: currentPos, in: Array(state.targetFloors)) {
             moveToward(floor: next)
